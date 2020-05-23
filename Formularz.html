@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" , initanl-scale="1.0" />  <!--Wyświetlanie na urządzeniach, mobilnych-->
+    <title>Formularz</title>
+    <style>
+
+
+        .labelclass2 {
+            background-color: darkcyan;
+            padding-left: 4px;
+            width: 420px;
+            display: inline-block;
+            text-align: center;
+            color: white;
+        }
+
+        .labelclass3 {
+            background-color: darkcyan;
+            padding-left: 4px;
+            width: 220px;
+            display: inline-block;
+            text-align: center;
+            color: white;
+        }
+
+
+        #divSlider {
+            font-family: sans-serif;
+            border: 1px solid #AAA;
+            width: 300px;
+            height: 50px;
+            background: #EEE;
+            margin: 2px;
+            padding: 5px;
+            box-shadow: 0 0 2px #CCC;
+            text-align: center;
+        }
+
+        .minmax1 {
+            font-size: 0.9em;
+            background-color: #FFF;
+            padding: 0 4px 0 4px;
+            border: 1px solid rgba(7,7,7,0.2);
+        }
+
+        .val1 {
+            font-size: 0.9em;
+            padding: 0 4px 0 4px;
+            background-color: #fd0;
+            border: 1px solid rgba(7,7,7,0.2);
+        }
+
+        .title1 {
+            left: 10px;
+            text-align: center;
+            font-size: 1em;
+            position: relative;
+        }
+
+        input1 {
+            width: 200px;
+        }
+
+        .row1 {
+            margin: 0 0;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        function showSliderRange() {
+            var arrMin = new Array();
+            var arrMax = new Array();
+
+            //pobranie wszystkich elementów strony z nazwą "slider"
+            var elements = document.getElementsByName('slider');
+
+
+            for (var i = 0; i < elements.length; i++) {
+                arrMin[i] = document.getElementById("slider" + (i + 1)).min;
+                arrMax[i] = document.getElementById("slider" + (i + 1)).max;
+            }
+
+            for (var i = 0; i < elements.length; i++) {
+                document.getElementById("slider" + (i + 1) + "Min").innerHTML = parseFloat(arrMin[i]).toFixed(1);
+                document.getElementById("slider" + (i + 1) + "Max").innerHTML = parseFloat(arrMax[i]).toFixed(1);
+            }
+        }
+
+        function showSliderValue() {
+
+            //pobranie wszystkich elementów strony z nazwą "slider"
+            var elements = document.getElementsByName('slider');
+
+            for (var i = 0; i < elements.length; i++) {
+                var wartosc = document.getElementById("slider" + (i + 1)).value
+                document.getElementById("slider" + (i + 1) + "Val").innerHTML = parseFloat(wartosc).toFixed(1);
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap&subset=latin-ext" rel="stylesheet"> <!--czcionka-->
+    <link rel="icon" href="favicon.ico" /><!--ikona strony-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="layout.css" />
+
+</head>
+<body1>
+    <div id="wrapper">
+        <header>
+            <img class="big" src="img/Logo.jpg" alt="Logo-header" />
+
+        </header>
+
+        <nav>
+            <a class="menu" href="index.html">Firma</a><a class="menu " href="Nowości.html">Nowości</a><a class="menu " href=" Kupno.html">Kupno</a><a class="menu active " href="Formularz.html">Sprzedaż</a><a class="menu " href="Pracownicy.html">Pracownicy</a><a class="menu " href="Ubezpieczenia.html">Ubezpieczenia</a><a class="menu " href="Mapa.html">Zdjęcia</a><a class="menu " href="Konkurs.html">Konkurs</a><a class="menu " href="Kalkulator.html">Kalkulator</a><a class="menu " href="Kontakt.html">Kontakt</a>
+        </nav>
+
+        <main>
+            <section>
+                <article>
+                    <h1>Formularz oferty sprzedaży auta</h1>
+                    <p1>
+                        <img class="Okejka" src="img/Okejka.jpg" alt="Okejka" />
+                        W trosce o bezpieczeństwo naszych klientów,
+                        sporządziliśmy formularz który ma na celu przedstawienie oferty,sprzedaży auta.
+                        Jesteśmy otwarci na wszelkie propozycję lecz nie ukrywamy,że nie jesteśmy łatwym negocjatorem,
+                        jednak żadna oferta nie będzie przez nas odrzucona z góry
+                    </p1>
+
+                    <header>
+                        <h3>
+                            <i>
+                                Proszę wypełnić ten formularz. <br>
+                                Obowiązkowe pola oznaczono znakiem
+                            </i><em>*</em>.
+                        </h3>
+                    </header>
+            </section>
+            <form action="" method="post">
+
+                <div class="row2">
+                    <fieldset>
+                        <legend>Płeć</legend>
+                        <div><label><input type="radio" name="Płeć" checked>Mężczyzna</label></div>
+                        <div><label><input type="radio" name="Płeć">        Kobieta</label></div>
+                    </fieldset>
+                </div>
+
+                <div class="row2">
+                    <fieldset>
+                        <legend>Dane Kontaktowe</legend>
+                        <div><label class="labelclass3">Imię<em>*</em></label><input type="text" name="imie" placeholder="Sebastian" required /></div>
+                        <div><label class="labelclass3">Nazwisko<em>*</em></label><input type="text" name="Nazwisko" placeholder="Nowak" required /></div>
+                        <div><label class="labelclass3">Numer telefonu <em>*</em></label><input type="tel" name="telefon" placeholder="+(48)XXX XXX XXX" required /></div>
+                        <div><label class="labelclass3">E-mail<em>*</em></label><input type="email" multiple name="E-mail" placeholder="sebi@o2.pl" /></div>
+                        <div><label class="labelclass3">Twoje Miasto<em>*</em></label><input type="text" name="Miasto" placeholder="Poznań" required /></div>
+                        <div><label class="labelclass3">Kod pocztowy<em>*</em></label><input type="datetime-local" name="Kod pocztowy" placeholder="64-730" required /></div>
+                    </fieldset>
+                </div>
+
+                <div class="row2">
+                    <fieldset>
+                        <legend>Dane Szczegółowe</legend>
+                        <div><label class="labelclass3">Data urodzenia <em>*</em></label><input type="date" name="Data urodzenia" required></div>
+                        <div><label class="labelclass3">Wiek</label><input type="number" name="Wiek" placeholder="18" step="1" required /></div>
+
+                    </fieldset>
+                </div>
+                <div class="row2">
+                    <fieldset>
+                        <legend>Informacje o pojeździe</legend>
+                        <div>
+                            <label class="labelclass3" for="Marka auta">Marka auta<em>*</em></label>
+                            <select id="Marka auta">
+                                <option selected>Alfa Romeo</option>
+                                <option>Audi</option>
+                                <option>BMW</option>
+                                <option>Chevrolet</option>
+                                <option>Citroen</option>
+                                <option>Dacia</option>
+                                <option>Fiat</option>
+                                <option>Ford</option>
+                                <option>Honda</option>
+                                <option>Hyundai</option>
+                                <option>Jeep</option>
+                                <option>Kia</option>
+                                <option>Land Rover</option>
+                                <option>Lexus</option>
+                                <option>Mazda</option>
+                                <option>Mitsubishi</option>
+                                <option>Nissan</option>
+                                <option>Opel</option>
+                                <option>Peugeot</option>
+                                <option>Renault</option>
+                                <option>Skoda</option>
+                                <option>Toyota</option>
+                                <option>Volswagen</option>
+                                <option>Volvo</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="labelclass3" for="Typ nadwozia">Typ nadwozia<em>*</em></label><select id="Typ nadwozia">
+                                <option selected>SUV</option>
+                                <option>Coupe</option>
+                                <option>Dual cowl</option>
+                                <option>Fastback</option>
+                                <option>Hatchback</option>
+                                <option>Kabriolet</option>
+                                <option>Kombi</option>
+                                <option>Liftback</option>
+                                <option>Limuzyna</option>
+                                <option>Mikovan</option>
+                                <option>Minivan</option>
+                                <option>Pick-up</option>
+                                <option>Roadster</option>
+                                <option>Sedan</option>
+                                <option>Targa</option>
+                                <option>Van</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="labelclass3" for="Rodzaj paliwa">Rodzaj paliwa<em>*</em></label><select id="Rodzaj paliwa">
+                                <option selected>Diesel</option>
+                                <option>Elektryczne</option>
+                                <option>Ogniwa wodorowe</option>
+                                <option>Benzyna</option>
+                                <option>LPG</option>
+                                <option>Inne</option>
+                            </select>
+                        </div>
+                        <div><label class="labelclass3">Rok produkcji<em>*</em></label><input type="date" name="Rok produkcji" required /></div>
+                        <div><label class="labelclass3">Model auta<em>*</em></label><input type="text" name="Model auta" required /></div>
+                        <div><label class="labelclass3">Przebieg auta<em>*</em></label><input type="text" name="Przebieg auta" placeholder="Kilometry" required /></div>
+                        <div><label class="labelclass3">Moc silnika<em>*</em></label><input type="text" name="Moc silnika" placeholder="Konie mechaniczne" required /></div>
+                        <div><label class="labelclass3">Pojemność silnika<em>*</em></label><input type="text" name="Pojemność silnika" placeholder="Centymetry sześcienne" required /></div>
+                        <div><label class="labelclass3">Waga pojazdu</label><input type="text" name="Waga pojazdu" placeholder="Kilogramy" required /></div>
+                        <div><label class="labelclass3">Liczba kluczyków</label><input type="text" name="Liczba kluczyków" placeholder="2" required /></div>
+                        <div><label class="labelclass3">Numer VIN</label><input type="text" name="NumerVIN" placeholder="XXXXXXXXXX" required /></div>
+                        <div><label class="labelclass3">Proponowana cena<em>*</em></label><input type="text" name="Proponowana cena" placeholder="Złotówki" required /></div>
+                        <div class="row1"><label class="labelclass3"> Kolor lakieru pojazdu<input type="color" name="kolor" value="#ff0000"></label></div>
+                        <div class="row1"><label class="labelclass3">Preferowany stan zatankowania samochodu <meter min="0" max="100" title="procent" value="100" low="30" high="70" optimum="75"></meter></label></div>
+                        <div id="divSlider"><div>Długość pojazdu&nbsp;<span id="slider1Val" class="val"></span>&nbsp;cm</div><div><span id="slider1Min" class="minmax"></span><input type="range" min="0" max="1200" step="1" value="800" id="slider1" name="slider" onchange="showSliderValue();" onmousemove="showSliderValue();"><span id="slider1Max" class="minmax"></span></div></div>
+
+                    </fieldset>
+
+                </div>
+                <div class="row2">
+                    <fieldset>
+                        <legend>Wyposażenie auta </legend>
+                        <div class="col">
+                            <div><label><input type="checkbox" name="wyp[]" value="1" checked>ABS</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="2">Elektryczne Szyby</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="3">Regulowane lusterka</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="4">Kamera cofania</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="17">Podgrzewane siedzenia</label></div>
+                        </div>
+                        <div class="col">
+                            <div><label><input type="checkbox" name="wyp[]" value="5">Czujniki parkowania</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="6">Radio CD</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="7">Wielofunkcyjna kierownica</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="8">Klimatyzacja</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="18">ESP</label></div>
+                        </div>
+                        <div class="col">
+                            <div><label><input type="checkbox" name="wyp[]" value="9">Alarm</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="10">Centralny zamek</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="11">Podgrzewane lusterka</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="12">GPS</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="19">ASR</label></div>
+                        </div>
+                        <div class="col">
+                            <div><label><input type="checkbox" name="wyp[]" value="13">Asystent pasa</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="14">Automatyczne światła</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="15">Immobilizer</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="16">Tempomat</label></div>
+                            <div><label><input type="checkbox" name="wyp[]" value="20">Zestaw głośnomówiący</label></div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="row2">
+                    <fieldset>
+                        <legend>Czy cena podlega negocjacji?</legend>
+                        <div><label><input type="radio" name="Negocjacje" checked>Tak</label></div>
+                        <div><label><input type="radio" name="Negocjacje">        Nie</label></div>
+                    </fieldset>
+                </div>
+                <div class="row2">
+                    <div><label class="labelclass3" for="komentarz"> Dodatkowe uwagi: </label></div>
+                    <textarea name="komentarz" id="komentarz" rows="4" cols="80" maxlength="25" minlength="10"></textarea>
+                </div>
+
+                <div class="row2"><label class="labelclass2">Posiadasz zdjęcie twojego auta? Wyślij je do nas!<input type="file" name="obraz" accept="image/x-png,image/gif,image/jpeg"></label></div>
+
+                <div class="row2">
+                    
+                        <input type="submit" value="Wyślij!">
+                    
+                    
+                    <input type="reset" value="Wyczyść formularz">
+                </div>
+
+            </form>
+
+
+           
+
+            <footer>Dawid Karpczak.Numer indeksu:135989.Grupa:L-2. </footer>
+
+         </article>
+
+
+        </main>
+        </div>
+    
+    
+</body1>
+</html>

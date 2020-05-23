@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Pracownicy>
+  <Pracownik id="1">
+    <imie>Kowalski</imie>
+    <nazwisko>Grzegorz</nazwisko>
+    <placa>3100.00</placa>
+  </Pracownik>
+  <Pracownik id="2">
+    <imie>Rutkowski</imie>
+    <nazwisko>Andrzej</nazwisko>
+    <placa>7000.00</placa>
+  </Pracownik>
+  <Pracownik id="3">
+    <imie>Grabowski</imie>
+    <nazwisko>Zenon</nazwisko>
+    <placa>5000.00</placa>
+  </Pracownik>
+  <Pracownik id="4">
+    <imie>Witkiewicz</imie>
+    <nazwisko>Witold</nazwisko>
+    <placa>3000.00</placa>
+  </Pracownik>
+</Pracownicy>

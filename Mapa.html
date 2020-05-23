@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" , initanl-scale="1.0" />  <!--Wyświetlanie na urządzeniach, mobilnych-->
+    <title>Zdjęcia</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap&subset=latin-ext" rel="stylesheet"> <!--czcionka-->
+    <link rel="icon" href="favicon.ico" /><!--ikona strony-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="layout.css" />
+    <script type="text/javascript" src="testy.js"></script>
+
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <img class="big" src="img/Logo.jpg" alt="Logo-header" />
+
+        </header>
+
+        <nav>
+            <a class="menu " href="index.html">Firma</a><a class="menu " href="Nowości.html">Nowości</a><a class="menu " href=" Kupno.html">Kupno</a><a class="menu " href="Formularz.html">Sprzedaż</a><a class="menu " href="Pracownicy.html">Pracownicy</a><a class="menu " href="Ubezpieczenia.html">Ubezpieczenia</a><a class="menu active " href="Mapa.html">Zdjęcia</a><a class="menu " href="Konkurs.html">Konkurs</a><a class="menu " href="Kalkulator.html">Kalkulator</a><a class="menu " href="Kontakt.html">Kontakt</a>
+        </nav>
+
+        <section>
+            <article>
+                <h1>Zdjęcia naszego komisu</h1>
+                <p>
+                    <center> W celu ułatwienia dostępu naszych klientów do naszej oferty, wrzuciliśmy kilka zdjęć naszego zakładu oraz niektóre oferty.</center>
+                    <center> Ponadto po kliknięciu na dany strona zostanie przekierowana na stronę z  informacjami o danym modelu .</center>
+                </p>
+                <center>
+                    <img src="img/mapa.jpg" alt="mapa" usemap="#mapa" />;
+                    <map name="mapa" id="mapa">
+
+                        <area shape="poly" coords="109,181,68,207,42,222,37,235,37,254,119,255,155,251,158,226,219,194,192,176,152,175" alt="Volkswagen Sharan " href="https://pl.wikipedia.org/wiki/Volkswagen_Sharan">
+                        <area shape="poly" coords="197,213,168,226,161,231,159,240,156,261,251,266,259,250,302,228,319,213,296,194,245,189,223,195" alt="Mercedes-Benz CLS " href="https://pl.wikipedia.org/wiki/Mercedes-Benz_CLS">
+                        <area shape="poly" coords="299,267,404,269,442,248,439,210,420,190,365,185,349,190,326,213,305,229,299,240" alt="BMW 5 " href="https://pl.wikipedia.org/wiki/BMW_serii_5">
+                        <area shape="poly" coords="456,269,573,274,574,226,555,186,494,184,468,216,458,234" alt="Skoda Superb " href="https://pl.wikipedia.org/wiki/%C5%A0koda_Superb">
+                    </map>
+                </center>
+
+                <center>
+                    <div id="kontener">
+                        <input type="button" value="Informacje" onclick="wyswietlTabele(Tabela);" />
+                        <br />
+                        <table class="table1" border="1">
+                            <thead><tr>
+                            <thead><tr><td>Model</td><td>Marka</td><td>Rok</td><td>Silnik</td><td>Cena[zl]</td><td>Dostepnosc</td></tr></thead>
+                            <tbody id="rekordy"></tbody>
+                        </table>
+                    </div>
+                </center>
+
+                <center>
+                    <div>
+                <p9>Strona w przebudowie!Za jakiś czas postaramy się to naprawić :)</p9>
+                   </div>
+                </center>
+
+
+            </article>
+          
+            <!--tutaj iframe-->
+        </section>
+        <footer>Dawid Karpczak.Numer indeksu:135989.Grupa:L-2.</footer>
+
+    </div>
+</body>
+</html>

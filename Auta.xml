@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<SPIS>
+  <AUTO>
+    <MARKA>Opel</MARKA>    
+    <MODEL>Astra</MODEL>
+    <TYP>Kombii</TYP>
+    <ROK>2002</ROK>
+    <CENA>8000zł</CENA>
+  </AUTO>
+
+	<AUTO>
+	  <MARKA>Volswagen</MARKA>
+	  <MODEL>Plus</MODEL>
+	  <TYP>Sedan</TYP>
+	  <ROK>2007</ROK>
+    <CENA>15000zł</CENA>
+</AUTO>
+
+	<AUTO>
+	  <MARKA>Ford</MARKA>
+	  <MODEL>Focus</MODEL>
+	  <TYP>Hatchback</TYP>
+    <ROK>2003</ROK>
+    <CENA>7000zł</CENA>
+</AUTO>
+
+	<AUTO>
+	  <MARKA>KIA</MARKA>
+	  <MODEL>Ceed</MODEL>
+	  <TYP>SUV</TYP>
+	  <ROK>2016</ROK>
+    <CENA>30000zł</CENA> 
+</AUTO>
+
+	<AUTO>
+	  <MARKA>Hyundai</MARKA>
+	  <MODEL>i30</MODEL>
+	  <TYP>Kombii</TYP>
+	  <ROK>2007</ROK>
+    <CENA>17000zł</CENA>
+</AUTO>
+
+	<AUTO>
+	  <MARKA>Fiat</MARKA>
+	  <MODEL>Tipo</MODEL>
+	  <TYP>Hatchback</TYP>
+	  <ROK>2015</ROK>
+    <CENA>23000zł</CENA>
+  </AUTO>
+
+	<AUTO>
+	  <MARKA>Honda</MARKA>
+	  <MODEL>Civic</MODEL>
+	  <TYP>SUV</TYP>
+	  <ROK>2017</ROK>
+    <CENA>35000zł</CENA>
+</AUTO>
+
+	<AUTO>
+	  <MARKA>Alfa Romeo</MARKA>
+	  <MODEL>Giulietta</MODEL>
+	  <TYP>Hatchback</TYP>
+	  <ROK>2006</ROK>
+    <CENA>8000zł</CENA>
+</AUTO>
+
+
+	<AUTO>
+		<MARKA>Citroen</MARKA>
+		<MODEL>C4</MODEL>
+		<TYP>Hatchback</TYP>
+		<ROK>2010</ROK>
+		<CENA>61000zł</CENA>
+	</AUTO>
+
+
+	<AUTO>
+		<MARKA>Hyundai</MARKA>
+		<MODEL>Elantra</MODEL>
+		<TYP>Hatchback</TYP>
+		<ROK>2018</ROK>
+		<CENA>70000zł</CENA>
+	</AUTO>
+
+
+	<AUTO>
+		<MARKA>Mazda</MARKA>
+		<MODEL>3</MODEL>
+		<TYP>Kombii</TYP>
+		<ROK>2009</ROK>
+		<CENA>35000zł</CENA>
+	</AUTO>
+
+
+	<AUTO>
+		<MARKA>Lancia</MARKA>
+		<MODEL>Delta</MODEL>
+		<TYP>SUV</TYP>
+		<ROK>2008</ROK>
+		<CENA>67000zł</CENA>
+	</AUTO>
+	
+	
+	
+</SPIS>

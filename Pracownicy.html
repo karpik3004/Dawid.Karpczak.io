@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" , initanl-scale="1.0" />  <!--Wyświetlanie na urządzeniach, mobilnych-->
+    <title>Pracownicy</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap&subset=latin-ext" rel="stylesheet"> <!--czcionka-->
+    <link rel="icon" href="favicon.ico" /><!--ikona strony-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="layout.css" />
+    <script type="text/javascript" src="daneXML.js"></script>
+
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <img class="big" src="img/Logo.jpg" alt="Logo-header" />
+
+        </header>
+
+        <nav>
+            <a class="menu" href="index.html">Firma</a><a class="menu " href="Nowości.html">Nowości</a><a class="menu " href=" Kupno.html">Kupno</a><a class="menu " href="Formularz.html">Sprzedaż</a><a class="menu active" href="Pracownicy.html">Pracownicy</a><a class="menu " href="Ubezpieczenia.html">Ubezpieczenia</a><a class="menu " href="Mapa.html">Zdjęcia</a><a class="menu " href="Konkurs.html">Konkurs</a><a class="menu " href="Kalkulator.html">Kalkulator</a><a class="menu " href="Kontakt.html">Kontakt</a>
+        </nav>
+
+        <section>
+            <article>
+                <h1>Pracownicy komisu samochodowego Karpczakowie</h1>
+
+                <p>
+                    <center>Prosimy o najechanie kursorem na danego pracownika oraz przyciśnięcie lewym przyciskiem myszy na interesującą osobę w celu  informacji podstawowych.</center>
+                </p>
+
+                <center>
+
+                    <div id="kontener">
+                        <img src="img/pracownicy.jpg" alt="pracownicy" usemap="#pracownicy" />;
+                        <map name="pracownicy" id="pracownicy">
+                            <area shape="poly" coords="28,247,38,214,25,146,40,99,40,54,69,33,90,51,95,85,91,113,110,169,180,217,166,239,114,219,114,247" alt="Tamara_Puki" href="javascript:void(0);" onclick="wyswietlTabele(Tabela)" />
+                            <area shape="poly" coords="93,101,136,77,139,55,135,22,154,5,175,16,177,58,172,74,198,97,208,106,220,205,179,216,116,179,90,103" alt="Ryszard_Nowak" href="javascript:void(0);" onclick="wyswietlTabele1(Tabela)" />
+                            <area shape="poly" coords="227,204,243,110,278,87,270,47,279,22,300,15,306,28,316,55,322,97,304,147,235,200" alt="Janina_Kolaszkowa" href="javascript:void(0);" onclick="wyswietlTabele2(Tabela)" />
+                            <area shape="poly" coords="207,216,310,140,321,108,347,97,349,86,339,84,329,61,325,27,350,5,379,9,396,42,387,85,428,118,421,247,309,242,316,186,218,240" alt="Szymon_Kowalczyk" href="javascript:void(0);" onclick="wyswietlTabele3(Tabela)" />
+                        </map>
+                    </div>
+                    <div>
+                        <table class="pracownicy1">
+                            <thead>
+                                <tr class="pracownicy2">
+                                    <td class="pracownicy">Płeć</td>
+                                    <td class="pracownicy">Imie</td>
+                                    <td class="pracownicy">Nazwisko</td>
+                                    <td class="pracownicy">Wiek</td>
+                                    <td class="pracownicy">Miasto</td>
+
+                                </tr>
+                            </thead>
+                            <tbody id="rekordy1"></tbody>
+                        </table>
+                    </div>
+                </center>
+
+                <div class="entry">
+
+                    <div class="entryimg">
+                        <img src="img/Tamara.jpg" alt="Tamara">
+                    </div>
+                    <div class="entrytxt">
+                        <h2>Tamara Puki</h2>
+                        <p>Młoda absolwentka Uniwersytetu Adama Mickiewicza w Poznaniu na dwóch kierunkach Zarządzanie oraz finanse.Świeżo zatrudniona w firmie o małym doświadczeniu.Z zamiłowania programistka języka C#. </p>
+                    </div>
+
+                </div>
+
+                <div class="entry">
+
+                    <div class="entryimg">
+                        <img src="img/Ryszard.jpg" alt="Ryszard">
+                    </div>
+                    <div class="entrytxt">
+                        <h2>Ryszard Nowak</h2>
+                        <p>Ryszard Nowak, czyli nasza perełka.Wielokrotny pracownik miesiąca z licznymi kursami oraz nagrodami z dziedziny detalingu.Kilkuletni ojciec dwójki dzieci oraz wolontariusz w okolicznym szpitalu w Poznaniu.</p>
+                    </div>
+
+                </div>
+
+                <div class="entry">
+
+                    <div class="entryimg">
+                        <img src="img/Janina.jpg" alt="Janina">
+                    </div>
+                    <div class="entrytxt">
+                        <h2>Janina Kolaszkowa</h2>
+                        <p>Janina odpowiada w naszej firmie za szeroko rozumianą logistyke, planuje trasy oraz miejsca skąd możemy sprowadzić dla państwa wszystkie auta. Dużo poświęca się pracy, dlatego zyskuje duże korzyści.Osoba nie do zastąpienia w naszej firmie.</p>
+                    </div>
+
+                </div>
+
+                <div class="entry">
+
+                    <div class="entryimg">
+                        <img src="img/Szymon.jpg" alt="Szymon">
+                    </div>
+                    <div class="entrytxt">
+                        <h2>Szymon Kowalczyk</h2>
+                        <p>Szymon, sprawdza, naprawia oraz konserwuje nasze samochody.Ma bardzo dużą wiedzę z zakresu motoryzacji.W wolnych chwilach składa statki w butelkach oraz ogląda mecze piłki nożnej wraz ze swoją drugą połową która profesjonalnie zajmuje się grą w tą dyscyplinę.</p>
+                    </div>
+
+                </div>
+
+            </article>
+    </section>
+
+    <footer>Dawid Karpczak.Numer indeksu:135989.Grupa:L-2.</footer>
+
+   </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" , initanl-scale="1.0" />  <!--Wyświetlanie na urządzeniach, mobilnych-->
+    <title>Kalkulator</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap&subset=latin-ext" rel="stylesheet"> <!--czcionka-->
+    <link rel="icon" href="favicon.ico" /><!--ikona strony-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="layout.css" />
+
+    <script>
+        function zegarek() {
+            var data = new Date();
+            var godzina = data.getHours();
+            var minuta = data.getMinutes();
+            var sekunda = data.getSeconds();
+            var dzien = data.getDate();
+            var dzienN = data.getDay();
+            var miesiac = data.getMonth();
+            var rok = data.getFullYear();
+
+            if (minuta < 10) minuta = "0" + minuta;
+            if (sekunda < 10) sekunda = "0" + sekunda;
+
+            var dni = new Array("niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota");
+            var miesiace = new Array("stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia");
+
+            var pokazDate = "Dzisiaj jest " + dni[dzienN] + ', ' + dzien + ' ' + miesiace[miesiac] + ' ' + rok + " roku.<br />Godzina " + godzina + ':' + minuta + ':' + sekunda;
+            document.getElementById("zegar").innerHTML = pokazDate;
+
+            setTimeout(zegarek, 1000);
+        }
+    </script>
+</head>
+<body onload="zegarek()" >
+    <div id="wrapper">
+        <header>
+            <img class="big" src="img/Logo.jpg" alt="Logo-header" />
+        </header>
+
+        <nav>
+            <a class="menu" href="index.html">Firma</a><a class="menu " href="Nowości.html">Nowości</a><a class="menu " href=" Kupno.html">Kupno</a><a class="menu " href="Formularz.html">Sprzedaż</a><a class="menu " href="Pracownicy.html">Pracownicy</a><a class="menu " href="Ubezpieczenia.html">Ubezpieczenia</a><a class="menu " href="Mapa.html">Zdjęcia</a><a class="menu " href="Konkurs.html">Konkurs</a><a class="menu active " href="Kalkulator">Kalkulator</a><a class="menu " href="Kontakt.html">Kontakt</a>
+        </nav>
+
+        <section>
+            <article>
+               <h1>Na państwa potrzeby prezentujemy kalkulator rat kredytu ! </h1>
+                <p9><center>Każda opcja pozwala w pełni obliczyć raty , oprocentownie oraz koszty dodatkowe!</center></p9>
+                <center>
+                    <script type="text/javascript" src="https://www.digitalmoney.pl/webmaster/widgety/kalkulator-js.php?v=1&sn=8757&kodowanie=iso-8859-2&obramo=1&kolorob=A9A9A9&szer=255&backgw=ffffff&head_color=0D118C&left_font=Arial&color_head=FFFFFF&size_head=13&left_fontsize=11&left_color=000066"></script>
+                </center>
+                    <p>
+                    <center>
+                        <canvas id="canvas" width="350" height="350"
+                                style="background-color:#FFFFFF"></canvas>
+                    </center>
+
+                    <script>
+                        var canvas = document.getElementById("canvas");
+                        var ctx = canvas.getContext("2d");
+                        var radius = canvas.height / 2;
+                        ctx.translate(radius, radius);
+                        radius = radius * 0.80
+                        setInterval(drawClock, 1000);
+
+                        function drawClock() {
+                            drawFace(ctx, radius);
+                            drawNumbers(ctx, radius);
+                            drawTime(ctx, radius);
+                        }
+
+                        function drawFace(ctx, radius) {
+                            var grad;
+                            ctx.beginPath();
+                            ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+                            ctx.fillStyle = 'darkcyan';
+                            ctx.fill();
+                            grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+                            grad.addColorStop(0, '#FFFFFF ');
+                            grad.addColorStop(0.5, 'white');
+                            grad.addColorStop(1, '#333');
+                            ctx.strokeStyle = grad;
+                            ctx.lineWidth = radius * 0.1;
+                            ctx.stroke();
+                            ctx.beginPath();
+                            ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+                            ctx.fillStyle = '#333';
+                            ctx.fill();
+                        }
+
+                        function drawNumbers(ctx, radius) {
+                            var ang;
+                            var num;
+                            ctx.font = radius * 0.15 + "px arial";
+                            ctx.textBaseline = "middle";
+                            ctx.textAlign = "center";
+                            for (num = 1; num < 13; num++) {
+                                ang = num * Math.PI / 6;
+                                ctx.rotate(ang);
+                                ctx.translate(0, -radius * 0.85);
+                                ctx.rotate(-ang);
+                                ctx.fillText(num.toString(), 0, 0);
+                                ctx.rotate(ang);
+                                ctx.translate(0, radius * 0.85);
+                                ctx.rotate(-ang);
+                            }
+                        }
+
+                        function drawTime(ctx, radius) {
+                            var now = new Date();
+                            var hour = now.getHours();
+                            var minute = now.getMinutes();
+                            var second = now.getSeconds();
+                            //hour
+                            hour = hour % 12;
+                            hour = (hour * Math.PI / 6) +
+                                (minute * Math.PI / (6 * 60)) +
+                                (second * Math.PI / (360 * 60));
+                            drawHand(ctx, hour, radius * 0.5, radius * 0.07);
+                            //minute
+                            minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
+                            drawHand(ctx, minute, radius * 0.8, radius * 0.07);
+                            // second
+                            second = (second * Math.PI / 30);
+                            drawHand(ctx, second, radius * 0.9, radius * 0.02);
+                        }
+
+                        function drawHand(ctx, pos, length, width) {
+                            ctx.beginPath();
+                            ctx.lineWidth = width;
+                            ctx.lineCap = "round";
+                            ctx.moveTo(0, 0);
+                            ctx.rotate(pos);
+                            ctx.lineTo(0, -length);
+                            ctx.stroke();
+                            ctx.rotate(-pos);
+                        }
+                    </script>
+                </p>
+
+
+            </article>
+            
+        </section>
+        <div id="zegar"></div>
+        <footer>
+            Dawid Karpczak.Numer indeksu:135989.Grupa:L-2.
+        </footer>
+
+    </div>
+</body>
+</html>

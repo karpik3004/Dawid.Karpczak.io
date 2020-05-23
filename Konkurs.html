@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" , initanl-scale="1.0" />  <!--Wyświetlanie na urządzeniach, mobilnych-->
+    <title>Konkurs</title>
+    <style>
+        canvas {
+            border: 1px dashed black;
+            background-color: dimgray;
+        }
+
+        input {
+            color: #3033ba;
+            display: inline-block;
+            max-width: 250px;
+            width: 24.7%;
+            padding: 15px 30px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            background-color: darkcyan;
+            font-size: 18px;
+            margin-bottom:15px;
+        }
+      
+
+            input.Selected {
+                background-color: aqua;
+            }
+            
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap&subset=latin-ext" rel="stylesheet"> <!--czcionka-->
+    <link rel="icon" href="favicon.ico" /><!--ikona strony-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="layout.css" />
+    <script type="text/javascript">
+        var can1;
+        var cont1;
+
+        window.onload = function ()
+        {
+            can1 = document.getElementById("plotno1");
+        }
+        function rysujAuto1()
+        {
+            if (cont1 == null) {
+                cont1 = can1.getContext("2d");
+            }
+
+            //Prostokąt 1 Paka
+            cont1.fillStyle = "rgba(255,0,0,0.5)";
+            cont1.fillRect(100, 100, 200, 100);
+            cont1.strokeStyle = "rgb(200,0,0)";
+            cont1.strokeRect(100, 100, 200, 100);
+
+            //Prostokąt 2 Miejsce kierowcy
+            cont1.fillStyle = "rgba(255,0,0,0.5)";
+            cont1.fillRect(300, 50, 50, 150);
+            cont1.strokeStyle = "rgb(200,0,0)";
+            cont1.strokeRect(300, 50, 50, 150);
+
+            //Prostokąt 3 Miejsce na silnik
+            cont1.fillStyle = "rgba(255,0,0,0.5)";
+            cont1.fillRect(350, 125,75, 75);
+            cont1.strokeStyle = "rgb(200,0,0)";
+            cont1.strokeRect(350, 125, 75, 75);
+
+            //Prostokąt 4 Okno
+            cont1.fillStyle = "white";
+            cont1.fillRect(300, 50, 50, 75);
+            cont1.strokeStyle = "rgb(200,0,0)";
+            cont1.strokeRect(300, 50, 50, 75);
+
+            //Prostokąt 5 Towar1
+            cont1.fillStyle = "orange";
+            cont1.fillRect(125, 50, 50, 50);
+
+            //Prostokąt 5 Towar2
+            cont1.fillStyle = "orange";
+            cont1.fillRect(200, 50, 50, 50);
+
+            //Okrąg 1
+            cont1.beginPath();
+            cont1.globalAlpha = 0.2;
+            cont1.arc(125,225,25, 0, 2 * Math.PI, true);
+            cont1.fillStyle = "rgb(0, 153, 255)";
+            cont1.fill();
+            cont1.strokeStyle = "blue";
+            cont1.stroke();
+            cont1.globalAlpha = 1;
+
+            //Okrąg 2
+            cont1.beginPath();
+            cont1.globalAlpha = 0.2;
+            cont1.arc(275, 225, 25, 0, 2 * Math.PI, true);
+            cont1.fillStyle = "rgb(0, 153, 255)";
+            cont1.fill();
+            cont1.strokeStyle = "blue";
+            cont1.stroke();
+            cont1.globalAlpha = 1;
+        }
+        function rysujAuto2() {
+            if (cont1 == null) {
+                cont1 = can1.getContext("2d");
+            }
+
+            //Prostokąt 1 Podstawa
+            cont1.fillStyle = "rgba(20,0,255,0.5)";
+            cont1.fillRect(75, 125, 200,50);
+            cont1.strokeStyle = "rgb(0,200,0)";
+            cont1.strokeRect(75, 125, 200, 50);
+
+            //Okrąg 1
+            cont1.beginPath();
+            cont1.globalAlpha = 0.2;
+            cont1.arc(100, 200, 25, 0, 2 * Math.PI, true);
+            cont1.fillStyle = "rgb(255, 100, 0)";
+            cont1.fill();
+            cont1.strokeStyle = "black";
+            cont1.stroke();
+            cont1.globalAlpha = 1;
+
+            //Okrąg 2
+            cont1.beginPath();
+            cont1.globalAlpha = 0.2;
+            cont1.arc(250, 200, 25, 0, 2 * Math.PI, true);
+            cont1.fillStyle = "rgb(255, 100, 0)";
+            cont1.fill();
+            cont1.strokeStyle = "black";
+            cont1.stroke();
+            cont1.globalAlpha = 1;
+
+            //trapez 1 okno
+            cont1.beginPath();
+            cont1.strokeStyle = "white";
+            cont1.moveTo(90, 125);
+            cont1.lineTo(125, 125);
+            cont1.lineTo(150, 75);
+            cont1.lineTo(125, 75);
+            cont1.fillStyle = "white";
+            cont1.fill();
+            cont1.closePatch();
+            cont1.stroke();
+
+        }
+        function Autor()
+        {
+            if (cont1 == null) {
+                cont1 = can1.getContext("2d");
+            }
+            cont1.font = "40px Calibri yellow";
+            cont1.textAlign = "left"
+            cont1.fillText("Autor pracy:", can1.width / 50, 50);
+            cont1.textAlign = "center";
+            cont1.lineWidth = 1;
+            cont1.strokeText("Dawid Karpczak ", can1.width / 2, 150);
+        }
+        function czyscRysunek(nrPlotna)
+        {
+            cont1.clearRect(0, 0, can1.width, can1.height);
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <img class="big" src="img/Logo.jpg" alt="Logo-header" />
+
+        </header>
+
+        <nav>
+            <a class="menu" href="index.html">Firma</a><a class="menu " href="Nowości.html">Nowości</a><a class="menu " href=" Kupno.html">Kupno</a><a class="menu " href="Formularz.html">Sprzedaż</a><a class="menu " href="Pracownicy.html">Pracownicy</a><a class="menu " href="Ubezpieczenia.html">Ubezpieczenia</a><a class="menu " href="Mapa.html">Zdjęcia</a><a class="menu active " href="Konkurs.html">Konkurs</a><a class="menu " href="Kalkulator.html">Kalkulator</a><a class="menu " href="Kontakt.html">Kontakt</a>
+        </nav>
+
+        <section>
+            <article>
+                <h1>Ogłaszamy wielki konkurs!</h1>
+                <div>
+                    <p9>
+                        <img class="Konkurs" src="img/Konkurs.jpg" alt="Konkurs" />
+                        Pragniemy ogłosić, że w celu zachęcenia klientów do współpracy z nami.
+                    </p9>
+                </div>
+                <div>
+                    <p9>
+                        Organizujemy konkurs graficzny pod tytułem:
+                        <b><i>Samochód oczami dziecka</i></b>
+                    </p9>
+                </div>
+                <div>
+                    <p9>
+                        Regulamin konkursu:
+                    </p9>
+                </div>
+                <div>
+                    <p9>
+                        -Udział mogą brać wyłącznie dzieci w wieku 7-15 lat.
+                    </p9>
+                </div>
+                <div>
+                    <p9>
+                        -Do stworzenia projektu można użyć wyłącznie figur geometrycznych.
+                    </p9>
+                </div>
+                <div>
+                    <p9>
+                        -Maksymalna liczba użytych figur to 8.
+                    </p9>
+                </div>
+                <div>
+                    <p9>
+                        -Prace można wysyłać w rozszerzeniu .html.
+                    </p9>
+                </div>
+                <div>
+                    <p9>
+                        -Mile widziany element promujący nasz komis. :)
+                    </p9>
+                </div>
+
+
+
+
+            </article>
+            <article>
+
+                <p7>Prace należy wysyłać na maila:"karpczak@gmail.com".Główną nagrodą jest bilet do Energylandii.Osoby wyróżnione przez naszą</p7>
+                <p7>firmę,zostaną obdarowane słodkimi paczkami od Wedla.Wszystkie z nagrodzonych prac zostanie umieszczona na naszej stronie. </p7>
+                <p7>Poniżej zamieściliśmy przykładowe sposoby prezentacji projektów, zostały one przygotowane w celu ułatwienia Państwu pracy.</p7>
+                
+            </article>
+            <article>
+                <form>
+                    <input type="button" name="btnLinie" value="Rysuj Auto1" onclick="rysujAuto1();" />
+                    <input type="button" name="btnLinie" value="Rysuj Auto2" onclick="rysujAuto2();" />
+                    <input type="button" name="btnLinie" value="Autor" onclick="Autor();" />
+                    <input type="button" name="btnLinie" value="Czyść obraz" onclick="czyscRysunek(1);" /><br />
+                    <canvas id="plotno1" width="500" height="300"></canvas>
+                </form>
+            </article>
+        </section>
+        <footer>Dawid Karpczak.Numer indeksu:135989.Grupa:L-2.</footer>
+
+    </div>
+</body>
+</html>
