@@ -1,111 +1,68 @@
-﻿<!DOCTYPE html>
-
-<html lang="pl" xmlns="http://www.w3.org/1999/xhtml">
+﻿<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" , initanl-scale="1.0" />  <!--Wyświetlanie na urządzeniach, mobilnych-->
-    <title>Kupno</title>
-    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap&subset=latin-ext" rel="stylesheet"> <!--czcionka-->
-    <link rel="icon" href="favicon.ico" /><!--ikona strony-->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="layout.css" />
-    <meta http-equiv="Content-type" content="text/html; charset=iso-8859-2" />
-    <title>Wyszukiwanie auta</title>
-
+    <meta http-equiv="Content-type" content="text/html; charset=iso-8859-2"/>
+    <title>Wyszukiwanie książek</title>
     <script type="text/javascript">
-
-      
-        var auto;
+        var ksiazka;
         function zaladujPlik() {
             xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", "Auta.xml", true);
+            xmlhttp.open("GET", "spis.xml", true);
             xmlhttp.send();
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     var xmlDoc = xmlhttp.responseXML;
-                    auto = xmlDoc.getElementsByTagName("AUTO");
+                    ksiazka = xmlDoc.getElementsByTagName("KSIAZKA");                    
                 }
-            }
+            }            
         }
 
 
-        function SzukajAuta() {
-            LancuchSzukany = TekstWyszukiwany.value.toUpperCase();
+        function SzukajKsiazki() {
+            LancuchSzukany = TekstWyszukiwany.value.toUpperCase();            
             if (LancuchSzukany == "") {
                 DIVWynikowy.innerHTML = "&ltNależy wprowadzić tekst "
                                 + "do pola 'Tekst tytułu'.&gt";
                 return;
             }
-
+            
             WynikHTML = "";
-            for (var i=0; i<auto.length; i++) {
-                LancuchTytulu = auto[i].getElementsByTagName("MARKA")[0].childNodes[0].nodeValue;
+            for (var i=0; i<ksiazka.length; i++) {
+                LancuchTytulu = ksiazka[i].getElementsByTagName("TYTUL")[0].childNodes[0].nodeValue;
                 
                 if (LancuchTytulu.toUpperCase().indexOf(LancuchSzukany) >= 0)
-                    WynikHTML += "<B>"
-                        + auto[i].getElementsByTagName("MARKA")[0].childNodes[0].nodeValue
+                    WynikHTML += "<I>"
+                           + ksiazka[i].getElementsByTagName("TYTUL")[0].childNodes[0].nodeValue
+                           + "</I>, "
+                        + "<B>"
+                        + ksiazka[i].getElementsByTagName("AUTOR")[0].textContent
                            + "</B>, "
-                        + ""
-                        + auto[i].getElementsByTagName("MODEL")[0].textContent
-                        + "<I>,"
-                        + auto[i].getElementsByTagName("TYP")[0].textContent
-                        + "</I>, "
-                        + auto[i].getElementsByTagName("ROK")[0].childNodes[0].nodeValue
-                           + " years, "
-                           + auto[i].getElementsByTagName("CENA")[0].childNodes[0].nodeValue
-                           + "<P>";
+                        + ksiazka[i].getElementsByTagName("OPRAWA")[0].textContent
+                           + ", "
+                           + ksiazka[i].getElementsByTagName("STRONY")[0].childNodes[0].nodeValue
+                           + " pages, "
+                           + ksiazka[i].getElementsByTagName("CENA")[0].childNodes[0].nodeValue
+                           + "<P>";               
             }
 
             if (WynikHTML == "")
-                DIVWynikowy.innerHTML = "&ltnie znaleziono auta&gt";
+                DIVWynikowy.innerHTML = "&ltnie znaleziono książek&gt";
             else
                 DIVWynikowy.innerHTML = WynikHTML;
         }
     </script>
 </head>
-<body>
-    <div id="wrapper">
-        <header>
-            <img class="big" src="img/Logo.jpg" alt="Logo-header" />
-
-        </header>
-
-        <nav>
-            <a class="menu " href="index.html">Firma</a><a class="menu " href="Nowości.html">Nowości</a><a class="menu active " href="Kupno.html">Kupno</a><a class="menu " href="Formularz.html">Sprzedaż</a><a class="menu " href="Pracownicy.html">Pracownicy</a><a class="menu " href="Ubezpieczenia.html">Ubezpieczenia</a><a class="menu " href="Mapa.html">Zdjęcia</a><a class="menu " href="Konkurs.html">Konkurs</a><a class="menu " href="Kalkulator.html">Kalkulator</a><a class="menu " href="Kontakt.html">Kontakt</a>
-        </nav>
-
-        <article>
-            <h1>Kup swoje wymarzone auto !</h1>
-
-            <center><p9>Specjalnie dla naszych klientów stworzyliśmy system umożliwiający wyszukiwanie Aut po frazach.</p9></center>
-            <center><p9><img class="Przytulas" src="img/Przytulas.jpg" alt="Logo-header" /></p9></center>
-            <div>
-                <center>
-                    <body onload="zaladujPlik()">
-                        <h2>
-                            Znajdź Auto dla siebie:
-                        </h2>
-                        <span>Fraza:</span>
-
-                        <input type="text" id="TekstWyszukiwany" />&nbsp
-                        <input type="button" onclick='SzukajAuta()' value="szukaj" />
-
-                </center>
-
-                <hr />
-                Wyniki:
-                <div1 id="DIVWynikowy">
-                </div1>
-
-
-                </body>
-
-            </div>
-            
-
-        </article>
-        <footer>Dawid Karpczak.Numer indeksu:135989.Grupa:L-2.</footer>
-
-    </div>
+<body onload="zaladujPlik()">    
+    <h2>
+        Znajdź książkę</h2>
+    <span>Tekst tytułu:</span>
+    
+    <input type="text" id="TekstWyszukiwany"/>&nbsp
+    <input type="button" onclick='SzukajKsiazki()' value="szukaj"/>
+        
+    
+    <hr/>
+    Wyniki:
+        <div id="DIVWynikowy">
+        </div>
 </body>
 </html>
