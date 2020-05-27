@@ -21,9 +21,10 @@ function wyswietlTabele(Tab) {
 
     var txt = '';
 
-
     for (var x = 0; x < Tab.length; x++) {
-        txt += '<tr>';
+        if ((x % 2) == 0) txt += '<tr style="background-color:white" > ';
+        else txt += '<tr>'
+
         txt += '<td>' + Tab[x].Marka + '</td>';
         txt += '<td>' + Tab[x].Model + '</td>';
         txt += '<td>' + Tab[x].Rok + '</td>';
