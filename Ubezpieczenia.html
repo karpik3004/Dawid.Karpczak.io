@@ -9,7 +9,136 @@
     <link rel="icon" href="favicon.ico" /><!--ikona strony-->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="layout.css" />
-    
+
+    <script>function oblicz() {
+            var kwota_pozyczki = document.getElementById("kwota_pozyczki");
+            var oprocentowanie = document.getElementById("oprocentowanie");
+            var czas_splaty = document.getElementById("czas_splaty");
+            var rata = document.getElementById("rata");
+            var suma = document.getElementById("suma");
+            var odsetkisuma = document.getElementById("odsetkisuma");
+
+            var bazowa_kwota = parseFloat(kwota_pozyczki.value);
+            var odsetki = parseFloat(oprocentowanie.value) / 100 / 12;
+            var ilosc_rat = parseFloat(czas_splaty.value) * 12;
+
+            //obliczenie raty miesiecznej
+            var x = Math.pow(1 + odsetki, ilosc_rat); //Math.pow computes powers
+            var rata_miesieczna = (bazowa_kwota * x * odsetki) / (x - 1);
+
+            if (isFinite(rata_miesieczna)) {
+                rata.innerHTML = rata_miesieczna.toFixed(2);
+                suma.innerHTML = (rata_miesieczna * ilosc_rat).toFixed(2);
+                odsetkisuma.innerHTML = ((rata_miesieczna * ilosc_rat) - bazowa_kwota).toFixed(2);
+                rysujWykres(bazowa_kwota, odsetki, rata_miesieczna, ilosc_rat);
+            } else {
+                rata.innerHTML = "";
+                suma.innerHTML = ""
+                odsetkisuma.innerHTML = "";
+                rysujWykres();
+            }
+        }
+
+
+        function rysujWykres(principal, interest, monthly, payments) {
+            var graph = document.getElementById("graph");
+            //czyszczenie wykresu
+            graph.width = graph.width;
+            if (arguments.length == 0 || !graph.getContext) return;
+
+            var g = graph.getContext("2d");
+            var width = graph.width, height = graph.height;
+
+            function paymentToX(n) {
+                return n * width / payments;
+            }
+
+            function amountToY(a) {
+                return height - (a * height / (monthly * payments * 1.05));
+            }
+
+            
+            g.moveTo(paymentToX(0), amountToY(0)); 
+            g.lineTo(paymentToX(payments), 
+                amountToY(monthly * payments));
+
+            g.lineTo(paymentToX(payments), amountToY(0)); 
+            g.closePath(); 
+            g.fillStyle = "#f88"; 
+            g.fill(); 
+            g.font = "bold 12px sans-serif"; 
+            g.fillText("Całkowita spłata odsetek", 20, 20); 
+          
+            var equity = 0;
+            g.beginPath(); 
+            g.moveTo(paymentToX(0), amountToY(0));
+            for (var p = 1; p <= payments; p++) {
+                
+                var thisMonthsInterest = (principal - equity) * interest;
+                equity += (monthly - thisMonthsInterest); 
+                g.lineTo(paymentToX(p), amountToY(equity)); 
+            }
+            g.lineTo(paymentToX(payments), amountToY(0)); 
+            g.closePath(); 
+            g.fillStyle = "green"; 
+            g.fill(); 
+            g.fillText("Kapitał całkowity", 20, 35); 
+            var bal = principal;
+            g.beginPath();
+            g.moveTo(paymentToX(0), amountToY(bal));
+            for (var p = 1; p <= payments; p++) {
+                var thisMonthsInterest = bal * interest;
+                bal -= (monthly - thisMonthsInterest); 
+                g.lineTo(paymentToX(p), amountToY(bal));
+            }
+            g.lineWidth = 3; 
+            g.stroke(); 
+            g.fillStyle = "black"; 
+            g.fillText("Pozostało do spłaty", 20, 50); 
+          
+            g.textAlign = "center";
+            var y = amountToY(0); 
+            for (var year = 1; year * 12 <= payments; year++) { 
+                var x = paymentToX(year * 12); 
+                g.fillRect(x - 0.5, y - 3, 1, 3); 
+                if (year == 1) g.fillText("Year", x, y - 5); 
+                if (year % 5 == 0 && year * 12 !== payments) 
+                    g.fillText(String(year), x, y - 5);
+            }
+            
+            g.textAlign = "right"; 
+            g.textBaseline = "middle"; 
+            var ticks = [monthly * payments, principal]; 
+            var rightEdge = paymentToX(payments); 
+            for (var i = 0; i < ticks.length; i++) { 
+                var y = amountToY(ticks[i]); 
+
+                g.fillRect(rightEdge - 3, y - 0.5, 3, 1); 
+                g.fillText(String(ticks[i].toFixed(0)), 
+                    rightEdge - 5, y);
+            }
+        }</script>
+    <style>
+
+        .output {
+            font-weight: bold;
+        }
+
+        #payment {
+            text-decoration: underline;
+        }
+
+        #graph {
+            border: solid black 1px;
+        }
+
+        th, td {
+            vertical-align: top;
+        }
+        #kalku{
+            background-color:gainsboro;
+        }
+    </style>
 </head>
 <body>
     <div id="wrapper">
@@ -26,7 +155,7 @@
             <article>
                 <h1>Ubezpieczenia</h1>
                 <center><p9>Nasza firma współpracuje z kilkoma porównarkami ubezpień AC i OC</p9></center>
-               
+
                 <div class="author">
 
                     <figure>
@@ -35,7 +164,7 @@
                     </figure>
 
                 </div>
-               
+
                 <div class="author">
 
                     <figure>
@@ -44,7 +173,7 @@
                     </figure>
 
                 </div>
-                
+
                 <div class="author">
 
                     <figure>
@@ -53,7 +182,7 @@
                     </figure>
 
                 </div>
-               
+
                 <div class="author">
 
                     <figure>
@@ -62,8 +191,64 @@
                     </figure>
 
                 </div>
+
             </article>
         </section>
+       <section><article>
+                    <div>
+                        <center>
+
+                            <p9>Tutaj możesz sprawdzić nasz kalkulkulator, sam zdecyduj który jest lepszy według ciebie ! </p9>
+                        </center>
+                    </div>
+    <div>
+        <center>
+            <table id="kalku">
+                <tr>
+                    <th>Podaj dane pożyczki:</th>
+                    <td></td>
+                    <th>Pozostała ilość do spłaty, kapitał narastająco, płatności odsetek</th>
+                </tr>
+                <tr>
+                    <td>Kwota pożyczki (PLN):</td>
+                    <td><input id="kwota_pozyczki" onchange="oblicz();"></td>
+                    <td rowspan=8>
+                        <canvas id="graph" width="400" height="250"></canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Oprocentowanie roczne (%):</td>
+                    <td><input id="oprocentowanie" onchange="oblicz();"></td>
+                </tr>
+                <tr>
+                    <td>Czas spłaty (lata):</td>
+                    <td><input id="czas_splaty" onchange="oblicz();"></td>
+                <tr>
+                <tr>
+                    <th>Wysokość spłaty:</th>
+                    <td>
+                        <button onclick="oblicz();">Oblicz</button>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rata miesięczna:</td>
+                    <td><span class="output" id="rata"></span>PLN</td>
+                </tr>
+                <tr>
+                    <td>Całkowita kwota do spłaty:</td>
+                    <td><span class="output" id="suma"></span>PLN</td>
+                </tr>
+                <tr>
+                    <td>Odsetki w sumie:</td>
+                    <td><span class="output" id="odsetkisuma"></span>PLN</td>
+                </tr>
+            </table>
+        </center>
+    </div>
+    
+</article></section>
+        
         <footer>Dawid Karpczak.Numer indeksu:135989.Grupa:L-2.</footer>
 
     </div>
